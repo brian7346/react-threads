@@ -19,6 +19,7 @@ import { GoBack } from "../../components/go-back"
 import { BASE_URL } from "../../constants"
 import { CiEdit } from "react-icons/ci"
 import { EditProfile } from "../../components/edit-profile"
+import { formatToClientDate } from "../../utils/format-to-client-date"
 
 export const UserProfile = () => {
   const { id } = useParams<{ id: string }>()
@@ -108,12 +109,18 @@ export const UserProfile = () => {
           )}
         </div>
         <p className="font-semibold">{data.email}</p>
-        <p className="italic">{data.bio || "Биография отсутствует"}</p>
+        {/* <p className="font-semibold">{data.email}</p>
+        {data.dateOfBirth && <p className="italic">{formatToClientDate(data.dateOfBirth)}</p>}
+        <p className="italic">{data.bio}</p>
         <p className="italic">
-          {data.location || "Местоположение отсутствует"}
-        </p>
+          {data.location}
+        </p> */}
+        <div className="flex justify-between w-200">
+          <p>{data.bio}</p>
+          {data.dateOfBirth && <p className="italic">{formatToClientDate(data.dateOfBirth)}</p>}
+        </div>
       </Card>
-      <EditProfile isOpen={isOpen} onClose={handleClose} />
+      <EditProfile isOpen={isOpen} onClose={handleClose} user={data}/>
     </>
   )
 }

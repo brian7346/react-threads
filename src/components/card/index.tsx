@@ -7,7 +7,7 @@ import {
 import { MetaInfo } from "../meta-info"
 import { Typography } from "../typography"
 import { User } from "../user"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaRegComment } from "react-icons/fa6"
 import {
   useUnlikePostMutation,
@@ -64,10 +64,10 @@ export const Card = ({
   const [deletePost, deletePostStatus] = useDeletePostMutation()
   const [deleteComment, deleteCommentStatus] = useDeleteCommentMutation()
   const [error, setError] = useState("")
+  const navigate = useNavigate()
   const currentUser = useSelector(selectCurrent)
 
   const refetchPosts = async () => {
-    console.log("cardFor ref", cardFor)
     switch (cardFor) {
       case "post":
         await triggerGetAllPosts().unwrap()
@@ -100,24 +100,24 @@ export const Card = ({
   }
 
   const handleDelete = async () => {
-    console.log("cardFor handleDelete", cardFor)
-
     try {
       switch (cardFor) {
         case "post":
           await deletePost(id).unwrap()
+          await refetchPosts()
           break
         case "current-post":
           await deletePost(id).unwrap()
+          navigate('/')
           break
         case "comment":
           await deleteComment(commentId).unwrap()
+          await refetchPosts()
           break
         default:
           throw new Error("Неверный аргумент cardFor")
       }
 
-      await refetchPosts()
     } catch (err) {
       console.log(err)
       if (hasErrorField(err)) {

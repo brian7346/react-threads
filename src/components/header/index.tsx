@@ -23,6 +23,7 @@ export const Header = () => {
 
   const hadleLogout = () => {
     dispatch(logout())
+    localStorage.removeItem('token')
     navigate("/auth")
   }
 

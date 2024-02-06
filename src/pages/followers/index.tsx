@@ -12,19 +12,21 @@ export const Followers = () => {
   }
 
   return currentUser.followers.length > 0 ? (
-    currentUser.followers.map((user) => (
-      <Link to={`/users/${user.follower.id}`} key={user.follower.id}>
-        <Card>
-          <CardBody className="block">
-            <User
-              name={user.follower.name ?? ""}
-              avatarUrl={user.follower.avatarUrl ?? ""}
-              description={user.follower.email ?? ""}
-            />
-          </CardBody>
-        </Card>
-      </Link>
-    ))
+    <div className="gap-5 flex flex-col">
+      {currentUser.followers.map((user) => (
+        <Link to={`/users/${user.follower.id}`} key={user.follower.id}>
+          <Card>
+            <CardBody className="block">
+              <User
+                name={user.follower.name ?? ""}
+                avatarUrl={user.follower.avatarUrl ?? ""}
+                description={user.follower.email ?? ""}
+              />
+            </CardBody>
+          </Card>
+        </Link>
+      ))}
+    </div>
   ) : (
     <h2>У вас нет подписчиков</h2>
   )

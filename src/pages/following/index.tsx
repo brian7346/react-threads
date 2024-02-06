@@ -12,19 +12,21 @@ export const Following = () => {
   }
 
   return currentUser.following.length > 0 ? (
-    currentUser.following.map((user) => (
-      <Link to={`/users/${user.following.id}`} key={user.following.id}>
-        <Card>
-          <CardBody className="block">
-            <User
-              name={user.following.name ?? ""}
-              avatarUrl={user.following.avatarUrl ?? ""}
-              description={user.following.email ?? ""}
-            />
-          </CardBody>
-        </Card>
-      </Link>
-    ))
+    <div className="gap-5 flex flex-col">
+      {currentUser.following.map((user) => (
+        <Link to={`/users/${user.following.id}`} key={user.following.id}>
+          <Card>
+            <CardBody className="block">
+              <User
+                name={user.following.name ?? ""}
+                avatarUrl={user.following.avatarUrl ?? ""}
+                description={user.following.email ?? ""}
+              />
+            </CardBody>
+          </Card>
+        </Link>
+      ))}
+    </div>
   ) : (
     <h2>Вы не подписаны ни на кого</h2>
   )
