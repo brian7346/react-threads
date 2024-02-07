@@ -10,10 +10,10 @@ type Props = {
 
 export const NavButton: React.FC<Props> = ({ children, icon, href }) => {
   return (
-    <Link to={href}>
-      <Button className="flex justify-start text-xl" icon={icon}>
+    <Button className="flex justify-start text-xl" icon={icon}>
+      <Link to={href}>
         {children}
-      </Button>
-    </Link>
+      </Link>
+    </Button>
   )
 }

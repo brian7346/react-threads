@@ -1,6 +1,5 @@
 import React from "react"
 import { BsPostcard } from "react-icons/bs"
-import { AiOutlineUser } from "react-icons/ai"
 import { FaUsers } from "react-icons/fa"
 import { FiUsers } from "react-icons/fi"
 import { NavButton } from "../nav-button"
@@ -15,12 +14,12 @@ export const NavBar: React.FC = () => {
           </NavButton>
         </li>
         <li>
-          <NavButton href="/following" icon={<FiUsers />}>
+          <NavButton href="following" icon={<FiUsers />}>
             Подписки
           </NavButton>
         </li>
         <li>
-          <NavButton href="/followers" icon={<FaUsers />}>
+          <NavButton href="followers" icon={<FaUsers />}>
             Подписчики
           </NavButton>
         </li>

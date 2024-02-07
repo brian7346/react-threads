@@ -3,7 +3,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
 } from "@nextui-org/react"
 import { LuSunMedium } from "react-icons/lu"
@@ -13,7 +12,7 @@ import { CiLogout } from "react-icons/ci"
 import { logout, selectIsAuthenticated } from "../../features/user/userSlice"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
-import { ThemeContext, ThemeProvider } from "../theme-provider"
+import { ThemeContext } from "../theme-provider"
 
 export const Header = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated)
