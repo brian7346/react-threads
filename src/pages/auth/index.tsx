@@ -1,17 +1,13 @@
 import { Card, CardBody, Tab, Tabs } from "@nextui-org/react"
-import React, { Key } from "react"
+import { useState } from "react"
 import { Login } from "../../features/user/login"
 import { Register } from "../../features/user/register"
 import { useAuthGuard } from "../../hooks/useAuthGuard"
 
 export const Auth = () => {
-  const [selected, setSelected] = React.useState<Key>("login")
+  const [selected, setSelected] = useState("login")
 
   useAuthGuard()
-
-  const onSelectionChange = (key: Key) => {
-    setSelected(key)
-  }
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -22,7 +18,7 @@ export const Auth = () => {
               fullWidth
               size="md"
               selectedKey={selected}
-              onSelectionChange={onSelectionChange}
+              onSelectionChange={(key) => setSelected(key as string)}
             >
               <Tab key="login" title="Вход">
                 <Login setSelected={setSelected} />
