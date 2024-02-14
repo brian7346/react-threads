@@ -1,27 +1,42 @@
-# vite-template-redux
+# Для запуска проекта, необходимо выполнить следующие шаги:
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
-
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
+2. Склонировать репозиторий с клиентским приложением по ссылке https://github.com/brian7346/react-threads.git на свой компьютер.
+```
+git clone https://github.com/brian7346/react-threads.git
 ```
 
-## Goals
+1. Склонировать репозиторий с api по ссылке [https://github.com/brian7346/express-threads-api.git](https://github.com/brian7346/express-threads-api/tree/main) на свой компьютер.
+```
+git clone https://github.com/brian7346/express-threads-api.git
+```
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+3. Открыть терминал (или командную строку) и перейти в корневую директорию сервера.
+```
+cd express-threads-api
+```
 
-## Scripts
+4. Переименовать файл .env.local (убрать .local)
+```
+.env
+```
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+5. Запустить команду docker compose которая поднимет сервер, клиент и базу данных
+```
+docker compose up
+```
 
-## Inspiration
+6. Открыть браузер и перейти по адресу http://localhost:80, чтобы увидеть запущенный проект.
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+
+
+# Если вы хотите скачать образ базы данных MongoDB
+
+Запустите контейнер с образом MongoDB и настройками replica set (он автоматичиски скачает и запустит этот образ):
+
+```
+  docker run --name mongo \
+       -p 27017:27017 \
+       -e MONGO_INITDB_ROOT_USERNAME="monty" \
+       -e MONGO_INITDB_ROOT_PASSWORD="pass" \
+       -d prismagraphql/mongo-single-replica:5.0.3
+```
