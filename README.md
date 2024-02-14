@@ -1,11 +1,11 @@
 # Для запуска проекта, необходимо выполнить следующие шаги:
 
-2. Склонировать репозиторий с клиентским приложением по ссылке https://github.com/brian7346/react-threads.git на свой компьютер.
+1. Склонировать репозиторий с клиентским приложением по ссылке https://github.com/brian7346/react-threads.git на свой компьютер.
 ```
 git clone https://github.com/brian7346/react-threads.git
 ```
 
-1. Склонировать репозиторий с api по ссылке [https://github.com/brian7346/express-threads-api.git](https://github.com/brian7346/express-threads-api/tree/main) на свой компьютер.
+2. Склонировать репозиторий с api по ссылке [https://github.com/brian7346/express-threads-api.git](https://github.com/brian7346/express-threads-api/tree/main) на свой компьютер.
 ```
 git clone https://github.com/brian7346/express-threads-api.git
 ```
